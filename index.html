@@ -327,11 +327,16 @@ body.result-mode .status{
     margin-top:76px;
   }
 
-  .result-card{
-    width:300px;
-    height:390px;
-    padding:100px 34px 40px;
-    bottom:88px;
+  .result-card {
+    width: 300px;
+    height: 390px;
+    padding: 100px 34px 40px;
+    
+    /* 捨棄 bottom，改用垂直置中 */
+    bottom: auto; /* 清除原本的 bottom */
+    top: 55%;     /* 調整這個百分比來精確對位 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 確保真正的水平垂直置中 */
   }
 
   .status{
