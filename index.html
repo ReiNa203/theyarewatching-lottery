@@ -3,14 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>牠們在看｜真相抽選</title>
+<title>牠們在看｜限量周邊一番賞抽獎</title>
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
   margin:0;
-  background:#050505;
+  background:#2c3748;
   color:white;
   font-family:Arial, "Noto Sans TC", sans-serif;
+  min-height:100vh;
+  overflow:hidden;
+}
+
+.page{
+  position:relative;
+  width:100%;
   min-height:100vh;
   display:flex;
   justify-content:center;
@@ -18,54 +29,166 @@ body{
   text-align:center;
 }
 
-.container{
-  width:90%;
-  max-width:720px;
-  padding:30px 20px;
+.logo{
+  position:absolute;
+  top:18px;
+  left:18px;
+  font-size:12px;
+  line-height:1.05;
+  letter-spacing:1px;
+  color:#8b5fb3;
+  font-weight:900;
+  text-align:left;
 }
 
-h1{ font-size:32px; margin-bottom:12px; }
+.logo::after{
+  content:"";
+  display:block;
+  width:72px;
+  height:20px;
+  margin-top:6px;
+  background:
+    radial-gradient(circle at 50% 50%, #fff8db 0 6px, transparent 7px),
+    linear-gradient(90deg, #67518f 0 45%, #f3c072 45% 58%, #67518f 58% 100%);
+  border-radius:3px;
+}
+
+.top-light{
+  position:absolute;
+  top:35px;
+  left:50%;
+  transform:translateX(-50%);
+  width:46px;
+  height:14px;
+  border-radius:5px;
+  background:#985a99;
+}
+
+.spotlight{
+  position:absolute;
+  top:86px;
+  left:50%;
+  transform:translateX(-50%);
+  width:105vw;
+  height:78vh;
+  background:#d48b79;
+  clip-path:polygon(42% 0, 58% 0, 100% 68%, 100% 100%, 0 100%, 0 68%);
+  border-radius:0 0 50% 50% / 0 0 14% 14%;
+  z-index:0;
+}
+
+.light-dot{
+  position:absolute;
+  top:84px;
+  left:50%;
+  transform:translateX(-50%);
+  width:28px;
+  height:28px;
+  background:#ffe89d;
+  border-radius:50%;
+  z-index:2;
+}
+
+.container{
+  position:relative;
+  z-index:3;
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  padding:210px 22px 40px;
+}
+
+h1{
+  font-size:25px;
+  margin:0 auto 12px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.title-line{
+  width:72%;
+  height:2px;
+  background:white;
+  margin:0 auto 16px;
+  opacity:.9;
+}
 
 p{
-  opacity:.75;
-  line-height:1.8;
+  margin:0;
+  font-size:16px;
+  line-height:1.6;
+  font-weight:700;
 }
 
 button{
-  margin-top:25px;
-  padding:15px 40px;
+  margin-top:22px;
+  padding:12px 34px;
   border:none;
   border-radius:999px;
-  background:white;
-  color:black;
-  font-size:20px;
-  font-weight:bold;
+  background:#985a99;
+  color:white;
+  font-size:16px;
+  font-weight:900;
   cursor:pointer;
+  box-shadow:0 8px 0 rgba(64,55,110,.45);
+}
+
+button:active{
+  transform:translateY(4px);
+  box-shadow:0 4px 0 rgba(64,55,110,.45);
 }
 
 .egg-area{
   display:none;
   justify-content:center;
-  gap:22px;
-  margin-top:36px;
-  flex-wrap:wrap;
+  align-items:flex-end;
+  gap:24px;
+  margin-top:82px;
+}
+
+.egg-wrap{
+  position:relative;
+}
+
+.egg-wrap.middle{
+  transform:translateY(60px);
+}
+
+.shadow{
+  position:absolute;
+  left:50%;
+  bottom:-10px;
+  transform:translateX(-50%);
+  width:84px;
+  height:15px;
+  background:#6f5a9c;
+  border-radius:50%;
+  z-index:0;
 }
 
 .egg{
-  width:130px;
-  height:170px;
-  background:linear-gradient(#fff7df, #e9c98c);
-  border-radius:50% 50% 45% 45%;
-  cursor:pointer;
   position:relative;
-  box-shadow:0 0 25px rgba(255,255,255,.18);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#3b2a16;
-  font-weight:bold;
-  font-size:20px;
+  width:94px;
+  height:128px;
+  background:#f7f2e8;
+  border-radius:52% 52% 45% 45%;
+  cursor:pointer;
+  z-index:1;
+  box-shadow:18px 0 0 #f4df9e;
+  transition:.25s;
   user-select:none;
+  font-size:0;
+}
+
+.egg::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:10px;
+  width:52px;
+  height:92px;
+  background:rgba(255,255,255,.7);
+  border-radius:50%;
 }
 
 .egg:hover{
@@ -78,45 +201,92 @@ button{
 
 @keyframes shake{
   0%{ transform:rotate(0deg); }
-  25%{ transform:rotate(8deg); }
-  50%{ transform:rotate(-8deg); }
-  75%{ transform:rotate(6deg); }
+  25%{ transform:rotate(9deg); }
+  50%{ transform:rotate(-9deg); }
+  75%{ transform:rotate(7deg); }
   100%{ transform:rotate(0deg); }
-}
-
-.egg.open{
-  animation:none;
-  background:#111;
-  color:white;
-  border:2px solid white;
-  border-radius:20px;
-  width:260px;
-  height:auto;
-  min-height:170px;
-  padding:24px;
-  line-height:1.6;
 }
 
 .hidden{
   display:none;
 }
 
-.status{
-  margin-top:24px;
-  font-size:15px;
-  opacity:.6;
+.result-card{
+  display:none;
+  margin:72px auto 0;
+  width:88%;
+  max-width:330px;
+  background:rgba(44,55,72,.94);
+  border:2px solid white;
+  border-radius:24px;
+  padding:24px 20px;
+  box-shadow:0 0 28px rgba(255,255,255,.18);
+  line-height:1.7;
 }
 
-@media(max-width:520px){
-  .egg{
-    width:100px;
-    height:138px;
-    font-size:16px;
+.result-card.show{
+  display:block;
+  animation:pop .35s ease forwards;
+}
+
+@keyframes pop{
+  from{
+    opacity:0;
+    transform:scale(.85);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.result-small{
+  font-size:15px;
+  opacity:.8;
+  margin-bottom:10px;
+}
+
+.result-prize{
+  font-size:20px;
+  font-weight:900;
+}
+
+.status{
+  margin-top:105px;
+  font-size:13px;
+  opacity:.75;
+}
+
+@media(max-width:430px){
+  .container{
+    padding-top:210px;
   }
 
-  .egg.open{
-    width:86%;
-    min-height:150px;
+  h1{
+    font-size:24px;
+  }
+
+  p{
+    font-size:15px;
+  }
+
+  .egg-area{
+    gap:16px;
+  }
+
+  .egg{
+    width:78px;
+    height:108px;
+    box-shadow:15px 0 0 #f4df9e;
+  }
+
+  .egg::before{
+    width:44px;
+    height:78px;
+  }
+
+  .shadow{
+    width:72px;
   }
 }
 </style>
@@ -124,25 +294,53 @@ button{
 
 <body>
 
-<div class="container">
+<div class="page">
 
-  <h1>真相周邊抽選</h1>
-
-  <p id="introText">
-    請先完成現場付款 NT$280。<br>
-    付款完成後，點擊下方按鈕開始抽選。
-  </p>
-
-  <button id="startBtn" onclick="showEggs()">開始抽獎</button>
-
-  <div class="egg-area" id="eggArea">
-    <div class="egg" onclick="chooseEgg(this)">蛋 01</div>
-    <div class="egg" onclick="chooseEgg(this)">蛋 02</div>
-    <div class="egg" onclick="chooseEgg(this)">蛋 03</div>
+  <div class="logo">
+    THEY ARE<br>WATCHING
   </div>
 
-  <div class="status" id="status">觀察系統待命中...</div>
+  <div class="top-light"></div>
+  <div class="spotlight"></div>
+  <div class="light-dot"></div>
 
+  <div class="container">
+
+    <h1>限量周邊一番賞抽獎</h1>
+    <div class="title-line"></div>
+
+    <p id="introText">
+      請先完成現場付款 NT$280。<br>
+      付款完成後，點擊下方按鈕開始抽選。
+    </p>
+
+    <button id="startBtn" onclick="showEggs()">開始抽獎</button>
+
+    <div class="egg-area" id="eggArea">
+      <div class="egg-wrap">
+        <div class="egg" onclick="chooseEgg(this)"></div>
+        <div class="shadow"></div>
+      </div>
+
+      <div class="egg-wrap middle">
+        <div class="egg" onclick="chooseEgg(this)"></div>
+        <div class="shadow"></div>
+      </div>
+
+      <div class="egg-wrap">
+        <div class="egg" onclick="chooseEgg(this)"></div>
+        <div class="shadow"></div>
+      </div>
+    </div>
+
+    <div class="result-card" id="resultCard">
+      <div class="result-small">蛋已開啟，你獲得了</div>
+      <div class="result-prize" id="resultPrize"></div>
+    </div>
+
+    <div class="status" id="status">觀察系統待命中...</div>
+
+  </div>
 </div>
 
 <script>
@@ -169,7 +367,9 @@ let alreadyChosen = false;
 
 function showEggs(){
   document.getElementById("startBtn").style.display = "none";
-  document.getElementById("introText").innerHTML = "請選擇一顆蛋。<br>牠會替你開啟本次配給結果。";
+  document.getElementById("introText").innerHTML =
+    "請選擇一顆蛋<br>牠會替你開啟本次配給結果";
+
   document.getElementById("eggArea").style.display = "flex";
   document.getElementById("status").innerText = "真相碎片同步中...";
 }
@@ -178,25 +378,29 @@ function chooseEgg(egg){
   if(alreadyChosen) return;
   alreadyChosen = true;
 
-  const allEggs = document.querySelectorAll(".egg");
+  const allWraps = document.querySelectorAll(".egg-wrap");
 
-  allEggs.forEach(e => {
-    if(e !== egg){
-      e.classList.add("hidden");
+  allWraps.forEach(wrap => {
+    if(!wrap.contains(egg)){
+      wrap.classList.add("hidden");
     }
   });
 
   egg.classList.add("shake");
-  document.getElementById("status").innerText = "蛋殼反應劇烈，配給結果生成中...";
+  document.getElementById("status").innerText =
+    "蛋殼反應劇烈，配給結果生成中...";
 
   setTimeout(() => {
     const prize = prizes[Math.floor(Math.random() * prizes.length)];
 
     egg.classList.remove("shake");
-    egg.classList.add("open");
-    egg.innerHTML = "蛋已開啟<br><br>你獲得了：<br><br>" + prize;
+    egg.parentElement.classList.add("hidden");
 
-    document.getElementById("status").innerText = "抽選完成，請向工作人員出示此畫面領取。";
+    document.getElementById("resultPrize").innerText = prize;
+    document.getElementById("resultCard").classList.add("show");
+
+    document.getElementById("status").innerText =
+      "抽選完成，請向工作人員出示此畫面領取。";
   }, 1800);
 }
 </script>
