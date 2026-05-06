@@ -1,89 +1,143 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>牠們在看｜周邊抽選</title>
+
+<title>牠們在看｜真相抽選</title>
 
 <style>
+
 body{
-  margin:0;
-  background:#000;
-  color:#fff;
-  font-family:Arial, "Noto Sans TC", sans-serif;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+    margin:0;
+    background:#000;
+    color:white;
+    font-family:Arial, sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
 }
 
-.box{
-  width:90%;
-  max-width:480px;
-  padding:30px;
+.container{
+    width:90%;
+    max-width:500px;
 }
 
 h1{
-  font-size:30px;
+    font-size:34px;
+    margin-bottom:20px;
 }
 
 p{
-  line-height:1.8;
-  opacity:.8;
+    opacity:0.7;
+    line-height:1.8;
 }
 
 button{
-  margin-top:25px;
-  padding:15px 36px;
-  font-size:20px;
-  border:none;
-  border-radius:999px;
-  background:#fff;
-  color:#000;
+
+    margin-top:30px;
+
+    padding:16px 42px;
+
+    border:none;
+    border-radius:999px;
+
+    background:white;
+    color:black;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+button:active{
+    transform:scale(0.96);
 }
 
 #result{
-  margin-top:35px;
-  font-size:26px;
-  font-weight:bold;
-  line-height:1.6;
+
+    margin-top:40px;
+
+    font-size:28px;
+
+    line-height:1.6;
+
+    font-weight:bold;
 }
+
+.small{
+    margin-top:18px;
+    font-size:14px;
+    opacity:0.5;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="box">
-  <h1>真相周邊抽選</h1>
+<div class="container">
 
-  <p>
-    請先完成現場付款 NT$280。<br>
-    付款完成後，點擊下方按鈕開始抽選。
-  </p>
+<h1>真相周邊抽選</h1>
 
-  <button id="drawBtn">開始抽選</button>
+<p>
+完成現場付款後，<br>
+即可進行一次真相抽選。
+</p>
 
-  <div id="result"></div>
+<button onclick="drawPrize()">
+開始抽選
+</button>
+
+<div id="result"></div>
+
+<div class="small">
+觀察系統待命中...
+</div>
+
 </div>
 
 <script>
-document.getElementById("drawBtn").addEventListener("click", function(){
 
-  var prizes = [
-    "No.13 壓克力吊飾",
-    "真相碎片貼紙組",
-    "C-98 徽章",
-    "展場限定明信片",
-    "觀察者小卡"
-  ];
+function drawPrize(){
 
-  var index = Math.floor(Math.random() * prizes.length);
-  var prize = prizes[index];
+const prizes = [
 
-  document.getElementById("result").innerHTML =
-    "你獲得了：<br>" + prize;
-});
+"遊戲場景造型立牌｜光之室",
+"遊戲場景造型立牌｜破殼夢",
+"遊戲場景造型立牌｜格子籠",
+"遊戲場景造型立牌｜食槽前的抉擇",
+"遊戲場景造型立牌｜全員淘汰",
+
+"卡牌流沙吊飾｜行動卡牌",
+"卡牌流沙吊飾｜真相卡牌",
+"卡牌流沙吊飾｜幻覺卡牌",
+
+"角色插圖磁吸燈箱｜斷喙者・喀喀",
+"角色插圖磁吸燈箱｜編碼觀測者・C-98",
+"角色插圖磁吸燈箱｜失焦者・No.13",
+"角色插圖磁吸燈箱｜羽封者・小白",
+"角色插圖磁吸燈箱｜孵夢者・殼裡裡",
+"角色插圖磁吸燈箱｜語者・啼鳴零號"
+
+];
+
+const randomIndex =
+Math.floor(Math.random() * prizes.length);
+
+const result = prizes[randomIndex];
+
+document.getElementById("result").innerHTML =
+"你獲得了：<br><br>" + result;
+
+}
+
 </script>
 
 </body>
