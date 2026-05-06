@@ -259,26 +259,35 @@ button:active{
   margin-top:6px;
 }
 
-/* 備註 */
+/* 付款備註：初始狀態在按鈕下方 */
 .status{
-  position:absolute;
-  bottom:118px;
-  left:50%;
-  transform:translateX(-50%);
+  position:static;
+  margin-top:28px;
+
   width:100%;
+
   font-size:13px;
   line-height:1.7;
+
   opacity:.9;
+
   color:#2d3142;
+
   font-weight:700;
   text-align:center;
+
   z-index:8;
 }
 
 /* 抽選完成時，備註移到結果蛋上方 */
 body.result-mode .status{
+  position:absolute;
+
   bottom:auto;
   top:282px;
+
+  left:50%;
+  transform:translateX(-50%);
 
   color:white;
   font-size:14px;
@@ -328,7 +337,7 @@ body.result-mode .status{
   }
 
   .status{
-    bottom:118px;
+    margin-top:28px;
   }
 
   body.result-mode .status{
@@ -360,6 +369,11 @@ body.result-mode .status{
       開始抽獎
     </button>
 
+    <div class="status" id="status">
+      請先完成現場付款 NT$280<br>
+      付款完成後即可開始抽選
+    </div>
+
     <div class="egg-area" id="eggArea">
 
       <div class="egg-wrap">
@@ -388,11 +402,6 @@ body.result-mode .status{
 
       <div class="result-prize" id="resultPrize"></div>
 
-    </div>
-
-    <div class="status" id="status">
-      請先完成現場付款 NT$280<br>
-      付款完成後即可開始抽選
     </div>
 
   </div>
@@ -430,9 +439,9 @@ function showEggs(){
   document.getElementById("introText").innerHTML =
   "請選擇一顆蛋<br>牠會替你開啟本次配給結果";
 
-  document.getElementById("eggArea").style.display = "flex";
-
   document.getElementById("status").innerHTML = "";
+
+  document.getElementById("eggArea").style.display = "flex";
 }
 
 function chooseEgg(egg){
