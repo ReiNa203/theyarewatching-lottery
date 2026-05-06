@@ -16,29 +16,29 @@
   box-sizing:border-box;
 }
 
+html,
 body{
   margin:0;
+  width:100%;
+  min-height:100%;
+  background:#2c3748;
+}
+
+body{
   color:white;
   font-family:Arial, "Noto Sans TC", sans-serif;
-  min-height:100vh;
   overflow:hidden;
-  background:#2c3748;
 }
 
 .page{
   position:relative;
   width:100%;
   min-height:100vh;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
   text-align:center;
 
   background-image:url("images/background.png");
-  background-size:cover;
-  background-position:center top;
+  background-size:100% auto;
+  background-position:top center;
   background-repeat:no-repeat;
 }
 
@@ -62,41 +62,41 @@ body{
   max-width:430px;
   min-height:100vh;
 
+  margin:0 auto;
+
   display:flex;
   flex-direction:column;
   align-items:center;
 
-  padding-top:210px;
+  padding-top:248px;
   padding-left:22px;
   padding-right:22px;
 }
 
 /* 標題 */
 h1{
-  font-size:30px;
-  margin:0 auto 10px;
+  font-size:28px;
+  margin:0 auto 9px;
   font-weight:900;
   letter-spacing:1px;
-  transform:translateY(-10px);
 
   font-family:"Cubic11", sans-serif;
   text-align:center;
 }
 
 .title-line{
-  width:74%;
+  width:72%;
   height:2px;
   background:white;
-  margin:0 auto 20px;
+  margin:0 auto 16px;
   opacity:.9;
 }
 
 p{
   margin:0;
   font-size:15px;
-  line-height:1.5;
+  line-height:1.45;
   font-weight:700;
-  transform:translateY(-2px);
   text-align:center;
 }
 
@@ -127,8 +127,8 @@ button:active{
   display:none;
   justify-content:center;
   align-items:flex-end;
-  gap:8px;
-  margin-top:88px;
+  gap:16px;
+  margin-top:76px;
   width:100%;
 }
 
@@ -198,7 +198,7 @@ button:active{
   position:absolute;
 
   left:50%;
-  bottom:170px;
+  bottom:150px;
 
   transform:translateX(-50%);
 
@@ -262,14 +262,14 @@ button:active{
 /* 底部備註 */
 .status{
   position:absolute;
-  bottom:100px;
+  bottom:118px;
   left:50%;
   transform:translateX(-50%);
   width:100%;
   font-size:13px;
   line-height:1.7;
   opacity:.9;
-  color:white;
+  color:#2d3142;
   font-weight:700;
   text-align:center;
   z-index:8;
@@ -283,11 +283,11 @@ button:active{
   }
 
   .container{
-    padding-top:210px;
+    padding-top:248px;
   }
 
   h1{
-    font-size:30px;
+    font-size:28px;
   }
 
   p{
@@ -305,19 +305,19 @@ button:active{
   }
 
   .egg-area{
-    gap:8px;
-    margin-top:88px;
+    gap:16px;
+    margin-top:76px;
   }
 
   .result-card{
     width:280px;
     height:365px;
     padding:100px 34px 40px;
-    bottom:170px;
+    bottom:150px;
   }
 
   .status{
-    bottom:100px;
+    bottom:118px;
   }
 }
 
