@@ -49,10 +49,10 @@ body{
 /* 燈 */
 .lamp{
   position:absolute;
-  top:8px;
+  top:-8px;
   left:50%;
   transform:translateX(-50%);
-  width:145px;
+  width:185px;
   z-index:5;
   user-select:none;
   pointer-events:none;
@@ -61,23 +61,23 @@ body{
 /* 聚光燈 */
 .spotlight{
   position:absolute;
-  top:84px;
+  top:96px;
   left:50%;
   transform:translateX(-50%);
-  width:135vw;
-  height:82vh;
+  width:155vw;
+  height:88vh;
   background:#d48d7d;
 
   clip-path:polygon(
-    38% 0,
-    62% 0,
-    100% 68%,
+    34% 0,
+    66% 0,
+    100% 69%,
     100% 100%,
     0 100%,
-    0 68%
+    0 69%
   );
 
-  border-radius:0 0 50% 50% / 0 0 13% 13%;
+  border-radius:0 0 50% 50% / 0 0 12% 12%;
   z-index:0;
 }
 
@@ -92,6 +92,7 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:flex-start;
 
   padding-top:210px;
   padding-left:22px;
@@ -100,27 +101,28 @@ body{
 
 /* 標題 */
 h1{
-  font-size:28px;
+  font-size:30px;
   margin:0 auto 10px;
   font-weight:900;
   letter-spacing:1px;
   transform:translateY(-10px);
+
   font-family:"Cubic11", sans-serif;
   text-align:center;
 }
 
 .title-line{
-  width:72%;
+  width:74%;
   height:2px;
   background:white;
-  margin:0 auto 18px;
+  margin:0 auto 20px;
   opacity:.9;
 }
 
 p{
   margin:0;
   font-size:15px;
-  line-height:1.45;
+  line-height:1.5;
   font-weight:700;
   transform:translateY(-2px);
   text-align:center;
@@ -138,6 +140,7 @@ button{
   font-weight:900;
   cursor:pointer;
   box-shadow:0 8px 0 rgba(64,55,110,.45);
+
   font-family:"Cubic11", sans-serif;
   letter-spacing:1px;
 }
@@ -153,7 +156,7 @@ button:active{
   justify-content:center;
   align-items:flex-end;
   gap:6px;
-  margin-top:70px;
+  margin-top:78px;
   width:100%;
 }
 
@@ -180,6 +183,7 @@ button:active{
 
 .egg{
   position:relative;
+
   width:138px;
   height:178px;
 
@@ -218,22 +222,28 @@ button:active{
 /* 結果蛋 */
 .result-card{
   display:none;
+
   position:absolute;
+
   left:50%;
-  bottom:175px;
+  bottom:200px;
+
   transform:translateX(-50%);
 
-  width:260px;
-  height:340px;
+  width:320px;
+  height:420px;
 
   background-image:url("images/bigegg.png");
   background-size:contain;
   background-position:center;
   background-repeat:no-repeat;
 
-  padding:88px 34px 40px;
+  padding:110px 40px 48px;
+
   color:#2d3142;
+
   line-height:1.6;
+
   z-index:20;
   text-align:center;
 }
@@ -256,23 +266,31 @@ button:active{
 }
 
 .result-small{
-  font-size:16px;
+  font-size:18px;
   opacity:1;
   margin-bottom:34px;
   font-weight:700;
 }
 
 .result-prize{
-  font-size:24px;
+  font-size:28px;
   font-weight:900;
   line-height:1.5;
+
   font-family:"Cubic11", sans-serif;
+}
+
+.small-name{
+  font-size:0.68em;
+  line-height:1.4;
+  display:block;
+  margin-top:6px;
 }
 
 /* 底部備註 */
 .status{
   position:absolute;
-  bottom:52px;
+  bottom:120px;
   left:50%;
   transform:translateX(-50%);
   width:100%;
@@ -293,14 +311,14 @@ button:active{
   }
 
   .lamp{
-    top:8px;
-    width:145px;
+    top:-8px;
+    width:185px;
   }
 
   .spotlight{
-    top:84px;
-    width:138vw;
-    height:82vh;
+    top:96px;
+    width:158vw;
+    height:88vh;
   }
 
   .container{
@@ -308,7 +326,7 @@ button:active{
   }
 
   h1{
-    font-size:28px;
+    font-size:30px;
   }
 
   p{
@@ -331,14 +349,16 @@ button:active{
   }
 
   .result-card{
-    width:230px;
-    height:300px;
-    padding:82px 28px 34px;
-    bottom:150px;
+    width:280px;
+    height:365px;
+
+    padding:100px 34px 40px;
+
+    bottom:170px;
   }
 
   .status{
-    bottom:46px;
+    bottom:100px;
   }
 }
 
@@ -390,12 +410,14 @@ button:active{
     </div>
 
     <div class="result-card" id="resultCard">
+
       <div class="result-small">
         蛋已開啟<br>
         恭喜你獲得:
       </div>
 
       <div class="result-prize" id="resultPrize"></div>
+
     </div>
 
     <div class="status" id="status">
@@ -409,22 +431,24 @@ button:active{
 <script>
 
 const prizes = [
-  "遊戲場景造型立牌<br>光之室",
-  "遊戲場景造型立牌<br>破殼夢",
-  "遊戲場景造型立牌<br>格子籠",
-  "遊戲場景造型立牌<br>食槽前的抉擇",
-  "遊戲場景造型立牌<br>全員淘汰",
 
-  "卡牌流沙吊飾<br>行動卡牌",
-  "卡牌流沙吊飾<br>真相卡牌",
-  "卡牌流沙吊飾<br>幻覺卡牌",
+"遊戲場景造型立牌<br><span class='small-name'>光之室</span>",
+"遊戲場景造型立牌<br><span class='small-name'>破殼夢</span>",
+"遊戲場景造型立牌<br><span class='small-name'>格子籠</span>",
+"遊戲場景造型立牌<br><span class='small-name'>食槽前的抉擇</span>",
+"遊戲場景造型立牌<br><span class='small-name'>全員淘汰</span>",
 
-  "角色插圖磁吸燈箱<br>斷喙者・喀喀",
-  "角色插圖磁吸燈箱<br>編碼觀測者・C-98",
-  "角色插圖磁吸燈箱<br>失焦者・No.13",
-  "角色插圖磁吸燈箱<br>羽封者・小白",
-  "角色插圖磁吸燈箱<br>孵夢者・殼裡裡",
-  "角色插圖磁吸燈箱<br>語者・啼鳴零號"
+"卡牌流沙吊飾<br><span class='small-name'>行動卡牌</span>",
+"卡牌流沙吊飾<br><span class='small-name'>真相卡牌</span>",
+"卡牌流沙吊飾<br><span class='small-name'>幻覺卡牌</span>",
+
+"角色插圖磁吸燈箱<br><span class='small-name'>斷喙者・喀喀</span>",
+"角色插圖磁吸燈箱<br><span class='small-name'>編碼觀測者・C-98</span>",
+"角色插圖磁吸燈箱<br><span class='small-name'>失焦者・No.13</span>",
+"角色插圖磁吸燈箱<br><span class='small-name'>羽封者・小白</span>",
+"角色插圖磁吸燈箱<br><span class='small-name'>孵夢者・殼裡裡</span>",
+"角色插圖磁吸燈箱<br><span class='small-name'>語者・啼鳴零號</span>"
+
 ];
 
 let alreadyChosen = false;
@@ -450,9 +474,11 @@ function chooseEgg(egg){
   const allWraps = document.querySelectorAll(".egg-wrap");
 
   allWraps.forEach(wrap => {
+
     if(!wrap.contains(egg)){
       wrap.classList.add("hidden");
     }
+
   });
 
   egg.classList.add("shake");
