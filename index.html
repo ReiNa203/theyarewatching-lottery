@@ -198,19 +198,19 @@ button:active{
   position:absolute;
 
   left:50%;
-  bottom:150px;
+  bottom:92px;
 
   transform:translateX(-50%);
 
-  width:280px;
-  height:365px;
+  width:340px;
+  height:440px;
 
   background-image:url("images/bigegg.png");
   background-size:contain;
   background-position:center;
   background-repeat:no-repeat;
 
-  padding:92px 34px 40px;
+  padding:118px 38px 48px;
 
   color:#2d3142;
 
@@ -252,6 +252,11 @@ button:active{
   font-family:"Cubic11", sans-serif;
 }
 
+.main-name{
+  display:block;
+  white-space:nowrap;
+}
+
 .small-name{
   font-size:0.58em;
   line-height:1.4;
@@ -279,9 +284,7 @@ button:active{
   z-index:8;
 }
 
-/* 抽選完成時，隱藏舊文字 */
-body.result-mode h1,
-body.result-mode .title-line,
+/* 抽選完成時，只隱藏舊說明、按鈕、蛋區；保留大標題 */
 body.result-mode #introText,
 body.result-mode #startBtn,
 body.result-mode #eggArea{
@@ -293,7 +296,7 @@ body.result-mode .status{
   position:absolute;
 
   bottom:auto;
-  top:282px;
+  top:312px;
 
   left:50%;
   transform:translateX(-50%);
@@ -343,10 +346,10 @@ body.result-mode .status{
   }
 
   .result-card{
-    width:280px;
-    height:365px;
-    padding:92px 34px 40px;
-    bottom:150px;
+    width:340px;
+    height:440px;
+    padding:118px 38px 48px;
+    bottom:92px;
   }
 
   .status{
@@ -354,7 +357,7 @@ body.result-mode .status{
   }
 
   body.result-mode .status{
-    top:282px;
+    top:312px;
   }
 }
 
@@ -424,22 +427,22 @@ body.result-mode .status{
 
 const prizes = [
 
-"遊戲場景造型立牌<br><span class='small-name'>光之室</span>",
-"遊戲場景造型立牌<br><span class='small-name'>破殼夢</span>",
-"遊戲場景造型立牌<br><span class='small-name'>格子籠</span>",
-"遊戲場景造型立牌<br><span class='small-name'>食槽前的抉擇</span>",
-"遊戲場景造型立牌<br><span class='small-name'>全員淘汰</span>",
+"<span class='main-name'>遊戲場景造型立牌</span><span class='small-name'>光之室</span>",
+"<span class='main-name'>遊戲場景造型立牌</span><span class='small-name'>破殼夢</span>",
+"<span class='main-name'>遊戲場景造型立牌</span><span class='small-name'>格子籠</span>",
+"<span class='main-name'>遊戲場景造型立牌</span><span class='small-name'>食槽前的抉擇</span>",
+"<span class='main-name'>遊戲場景造型立牌</span><span class='small-name'>全員淘汰</span>",
 
-"卡牌流沙吊飾<br><span class='small-name'>行動卡牌</span>",
-"卡牌流沙吊飾<br><span class='small-name'>真相卡牌</span>",
-"卡牌流沙吊飾<br><span class='small-name'>幻覺卡牌</span>",
+"<span class='main-name'>卡牌流沙吊飾</span><span class='small-name'>行動卡牌</span>",
+"<span class='main-name'>卡牌流沙吊飾</span><span class='small-name'>真相卡牌</span>",
+"<span class='main-name'>卡牌流沙吊飾</span><span class='small-name'>幻覺卡牌</span>",
 
-"角色插圖磁吸燈箱<br><span class='small-name'>斷喙者・喀喀</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>編碼觀測者・C-98</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>失焦者・No.13</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>羽封者・小白</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>孵夢者・殼裡裡</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>語者・啼鳴零號</span>"
+"<span class='main-name'>角色插圖磁吸燈箱</span><span class='small-name'>斷喙者・喀喀</span>",
+"<span class='main-name'>角色插圖磁吸燈箱</span><span class='small-name'>編碼觀測者・C-98</span>",
+"<span class='main-name'>角色插圖磁吸燈箱</span><span class='small-name'>失焦者・No.13</span>",
+"<span class='main-name'>角色插圖磁吸燈箱</span><span class='small-name'>羽封者・小白</span>",
+"<span class='main-name'>角色插圖磁吸燈箱</span><span class='small-name'>孵夢者・殼裡裡</span>",
+"<span class='main-name'>角色插圖磁吸燈箱</span><span class='small-name'>語者・啼鳴零號</span>"
 
 ];
 
