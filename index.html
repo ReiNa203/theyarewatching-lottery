@@ -1,339 +1,36 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>牠們在看｜限量周邊一番賞抽獎</title>
+display:none;
+position:absolute;
+left:50%;
+  bottom:88px;
+  bottom:135px;
+transform:translateX(-50%);
 
-<style>
-
-@font-face{
-  font-family:"Cubic11";
-  src:url("fonts/Cubic_11.ttf") format("truetype");
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html,
-body{
-  margin:0;
-  width:100%;
-  min-height:100%;
-  background:#2c3748;
-}
-
-body{
-  color:white;
-  font-family:Arial, "Noto Sans TC", sans-serif;
-  overflow:hidden;
-}
-
-.page{
-  position:relative;
-  width:100%;
-  min-height:100vh;
-  text-align:center;
-
-  background-image:url("images/background.png");
-  background-size:100% auto;
-  background-position:top center;
-  background-repeat:no-repeat;
-}
-
-/* LOGO */
-.logo{
-  position:absolute;
-  top:18px;
-  left:18px;
-  width:76px;
-  z-index:10;
-  user-select:none;
-  pointer-events:none;
-}
-
-/* 內容 */
-.container{
-  position:relative;
-  z-index:3;
-
-  width:100%;
-  max-width:430px;
-  min-height:100vh;
-
-  margin:0 auto;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-
-  padding-top:248px;
-  padding-left:22px;
-  padding-right:22px;
-}
-
-/* 標題 */
-h1{
-  font-size:28px;
-  margin:0 auto 9px;
-  font-weight:900;
-  letter-spacing:1px;
-
-  font-family:"Cubic11", sans-serif;
-  text-align:center;
-}
-
-.title-line{
-  width:72%;
-  height:2px;
-  background:white;
-  margin:0 auto 16px;
-  opacity:.9;
-}
-
-p{
-  margin:0;
-  font-size:15px;
-  line-height:1.45;
-  font-weight:700;
-  text-align:center;
-}
-
-/* 按鈕 */
-button{
-  margin-top:22px;
-  padding:12px 34px;
-  border:none;
-  border-radius:999px;
-  background:#985a99;
-  color:white;
-  font-size:16px;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 8px 0 rgba(64,55,110,.45);
-
-  font-family:"Cubic11", sans-serif;
-  letter-spacing:1px;
-}
-
-button:active{
-  transform:translateY(4px);
-  box-shadow:0 4px 0 rgba(64,55,110,.45);
-}
-
-/* 蛋 */
-.egg-area{
-  display:none;
-  justify-content:center;
-  align-items:flex-end;
-  gap:16px;
-  margin-top:76px;
-  width:100%;
-}
-
-.egg-wrap{
-  position:relative;
-}
-
-.egg-wrap.middle{
-  transform:translateY(58px);
-}
-
-.shadow{
-  position:absolute;
-  left:50%;
-  bottom:4px;
-  transform:translateX(-50%);
-  width:82px;
-  height:14px;
-  background:#6f5a9c;
-  border-radius:50%;
-  z-index:0;
-  opacity:.95;
-}
-
-.egg{
-  position:relative;
-
-  width:118px;
-  height:152px;
-
-  background-image:url("images/egg.png");
-  background-size:contain;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  cursor:pointer;
-  z-index:1;
-  transition:.25s;
-  user-select:none;
-}
-
-.egg:hover{
-  transform:translateY(-6px);
-}
-
-/* 搖晃 */
-.egg.shake{
-  animation:shake .08s infinite;
-}
-
-@keyframes shake{
-  0%{ transform:rotate(0deg); }
-  25%{ transform:rotate(9deg); }
-  50%{ transform:rotate(-9deg); }
-  75%{ transform:rotate(7deg); }
-  100%{ transform:rotate(0deg); }
-}
-
-.hidden{
-  display:none;
-}
-
-/* 結果蛋 */
-.result-card{
-  display:none;
-
-  position:absolute;
-
-  left:50%;
-  bottom:150px;
-
-  transform:translateX(-50%);
-
-  width:280px;
-  height:365px;
-
-  background-image:url("images/bigegg.png");
-  background-size:contain;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  padding:92px 34px 40px;
-
-  color:#2d3142;
-
-  line-height:1.6;
-
-  z-index:20;
-  text-align:center;
-}
-
-.result-card.show{
-  display:block;
-  animation:pop .35s ease forwards;
-}
-
-@keyframes pop{
-  from{
-    opacity:0;
-    transform:translateX(-50%) scale(.85);
-  }
-
-  to{
-    opacity:1;
-    transform:translateX(-50%) scale(1);
-  }
-}
-
-.result-small{
-  font-size:17px;
-  opacity:1;
-  margin-bottom:34px;
-  font-weight:700;
-}
-
-.result-prize{
-  font-size:27px;
-  font-weight:900;
-  line-height:1.45;
-
-  font-family:"Cubic11", sans-serif;
-}
-
-.small-name{
-  font-size:0.58em;
-  line-height:1.4;
-  display:block;
-  margin-top:6px;
-}
-
-/* 備註 */
-.status{
-  position:absolute;
-  bottom:118px;
-  left:50%;
-  transform:translateX(-50%);
-  width:100%;
-  font-size:13px;
-  line-height:1.7;
-  opacity:.9;
-  color:#2d3142;
-  font-weight:700;
-  text-align:center;
-  z-index:8;
-}
-
-/* 抽選完成時，備註移到結果蛋上方 */
+width:300px;
+@@ -277,7 +277,7 @@
 body.result-mode .status{
-  bottom:auto;
-  top:282px;
+position:absolute;
+left:50%;
+  top:300px;
+  top:270px;
+transform:translateX(-50%);
+width:100%;
 
-  color:white;
-  font-size:14px;
-  line-height:1.6;
-  opacity:1;
+@@ -330,57 +330,57 @@
+width:300px;
+height:390px;
+padding:100px 34px 40px;
+    bottom:88px;
+    bottom:135px;
 }
 
-/* 手機 */
-@media(max-width:430px){
+.status{
+margin-top:28px;
+}
 
-  .logo{
-    width:76px;
-  }
-
-  .container{
-    padding-top:248px;
-  }
-
-  h1{
-    font-size:28px;
-  }
-
-  p{
-    font-size:15px;
-  }
-
-  .egg{
-    width:118px;
-    height:152px;
-  }
-
-  .shadow{
-    width:82px;
-    height:14px;
-  }
-
-  .egg-area{
-    gap:16px;
-    margin-top:76px;
-  }
-
-  .result-card{
-    width:280px;
-    height:365px;
-    padding:92px 34px 40px;
-    bottom:150px;
-  }
-
-  .status{
-    bottom:118px;
-  }
-
-  body.result-mode .status{
-    top:282px;
-  }
+body.result-mode .status{
+    top:300px;
+    top:270px;
+}
 }
 
 </style>
@@ -343,139 +40,38 @@ body.result-mode .status{
 
 <div class="page">
 
-  <img src="images/logo.png" class="logo">
+<img src="images/logo.png" class="logo">
 
-  <div class="container">
+<div class="container">
 
-    <h1>限量周邊一番賞抽獎</h1>
+<h1>限量周邊一番賞抽獎</h1>
 
-    <div class="title-line"></div>
+<div class="title-line"></div>
 
-    <p id="introText">
-      請選擇一顆蛋<br>
-      牠會替你開啟本次配給結果
-    </p>
+<p id="introText">
+請選擇一顆蛋<br>
+牠會替你開啟本次配給結果
+</p>
 
-    <button id="startBtn" onclick="showEggs()">
-      開始抽獎
-    </button>
+<button id="startBtn" onclick="showEggs()">
+開始抽獎
+</button>
 
-    <div class="egg-area" id="eggArea">
-
-      <div class="egg-wrap">
-        <div class="egg" onclick="chooseEgg(this)"></div>
-        <div class="shadow"></div>
-      </div>
-
-      <div class="egg-wrap middle">
-        <div class="egg" onclick="chooseEgg(this)"></div>
-        <div class="shadow"></div>
-      </div>
-
-      <div class="egg-wrap">
-        <div class="egg" onclick="chooseEgg(this)"></div>
-        <div class="shadow"></div>
-      </div>
-
-    </div>
-
-    <div class="result-card" id="resultCard">
-
-      <div class="result-small">
-        蛋已開啟<br>
-        恭喜你獲得:
-      </div>
-
-      <div class="result-prize" id="resultPrize"></div>
-
-    </div>
-
-    <div class="status" id="status">
-      請先完成現場付款 NT$280<br>
-      付款完成後即可開始抽選
-    </div>
-
-  </div>
+<div class="status" id="status">
+請先完成現場付款 NT$280<br>
+付款完成後即可開始抽選
 </div>
 
-<script>
+<div class="egg-area" id="eggArea">
 
-const prizes = [
+<div class="egg-wrap">
+<div class="egg" onclick="chooseEgg(this)"></div>
+<div class="shadow"></div>
+</div>
 
-"遊戲場景造型立牌<br><span class='small-name'>光之室</span>",
-"遊戲場景造型立牌<br><span class='small-name'>破殼夢</span>",
-"遊戲場景造型立牌<br><span class='small-name'>格子籠</span>",
-"遊戲場景造型立牌<br><span class='small-name'>食槽前的抉擇</span>",
-"遊戲場景造型立牌<br><span class='small-name'>全員淘汰</span>",
+<div class="egg-wrap middle">
+<div class="egg" onclick="chooseEgg(this)"></div>
+<div class="shadow"></div>
+</div>
 
-"卡牌流沙吊飾<br><span class='small-name'>行動卡牌</span>",
-"卡牌流沙吊飾<br><span class='small-name'>真相卡牌</span>",
-"卡牌流沙吊飾<br><span class='small-name'>幻覺卡牌</span>",
-
-"角色插圖磁吸燈箱<br><span class='small-name'>斷喙者・喀喀</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>編碼觀測者・C-98</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>失焦者・No.13</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>羽封者・小白</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>孵夢者・殼裡裡</span>",
-"角色插圖磁吸燈箱<br><span class='small-name'>語者・啼鳴零號</span>"
-
-];
-
-let alreadyChosen = false;
-
-function showEggs(){
-
-  document.getElementById("startBtn").style.display = "none";
-
-  document.getElementById("introText").innerHTML =
-  "請選擇一顆蛋<br>牠會替你開啟本次配給結果";
-
-  document.getElementById("eggArea").style.display = "flex";
-
-  document.getElementById("status").innerHTML = "";
-}
-
-function chooseEgg(egg){
-
-  if(alreadyChosen) return;
-
-  alreadyChosen = true;
-
-  const allWraps = document.querySelectorAll(".egg-wrap");
-
-  allWraps.forEach(wrap => {
-
-    if(!wrap.contains(egg)){
-      wrap.classList.add("hidden");
-    }
-
-  });
-
-  egg.classList.add("shake");
-
-  setTimeout(() => {
-
-    const prize =
-    prizes[Math.floor(Math.random() * prizes.length)];
-
-    egg.classList.remove("shake");
-
-    egg.parentElement.classList.add("hidden");
-
-    document.getElementById("resultPrize").innerHTML =
-    prize;
-
-    document.getElementById("resultCard").classList.add("show");
-
-    document.body.classList.add("result-mode");
-
-    document.getElementById("status").innerHTML =
-    "抽選完成，<br>請向工作人員出示此畫面領取";
-
-  }, 1800);
-}
-
-</script>
-
-</body>
-</html>
+<div class="egg-wrap">
