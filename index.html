@@ -228,7 +228,12 @@ button:active{
 .result-card{
   display:none;
 
-  margin:52px auto 0;
+  position:absolute;
+
+  left:50%;
+  bottom:120px;
+
+  transform:translateX(-50%);
 
   width:260px;
   height:340px;
@@ -244,7 +249,7 @@ button:active{
 
   line-height:1.6;
 
-  box-shadow:none;
+  z-index:20;
 }
 
 .result-card.show{
@@ -255,12 +260,12 @@ button:active{
 @keyframes pop{
   from{
     opacity:0;
-    transform:scale(.85);
+    transform:translateX(-50%) scale(.85);
   }
 
   to{
     opacity:1;
-    transform:scale(1);
+    transform:translateX(-50%) scale(1);
   }
 }
 
@@ -334,6 +339,8 @@ button:active{
     height:300px;
 
     padding:82px 28px 34px;
+
+    bottom:110px;
   }
 }
 
