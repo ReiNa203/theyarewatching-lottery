@@ -210,7 +210,7 @@ button:active{
   background-position:center;
   background-repeat:no-repeat;
 
-  padding:100px 34px 40px;
+  padding:92px 34px 40px;
 
   color:#2d3142;
 
@@ -238,28 +238,28 @@ button:active{
 }
 
 .result-small{
-  font-size:18px;
+  font-size:17px;
   opacity:1;
   margin-bottom:34px;
   font-weight:700;
 }
 
 .result-prize{
-  font-size:28px;
+  font-size:27px;
   font-weight:900;
-  line-height:1.5;
+  line-height:1.45;
 
   font-family:"Cubic11", sans-serif;
 }
 
 .small-name{
-  font-size:0.68em;
+  font-size:0.58em;
   line-height:1.4;
   display:block;
   margin-top:6px;
 }
 
-/* 底部備註 */
+/* 備註 */
 .status{
   position:absolute;
   bottom:118px;
@@ -273,6 +273,17 @@ button:active{
   font-weight:700;
   text-align:center;
   z-index:8;
+}
+
+/* 抽選完成時，備註移到結果蛋上方 */
+body.result-mode .status{
+  bottom:auto;
+  top:282px;
+
+  color:white;
+  font-size:14px;
+  line-height:1.6;
+  opacity:1;
 }
 
 /* 手機 */
@@ -312,12 +323,16 @@ button:active{
   .result-card{
     width:280px;
     height:365px;
-    padding:100px 34px 40px;
+    padding:92px 34px 40px;
     bottom:150px;
   }
 
   .status{
     bottom:118px;
+  }
+
+  body.result-mode .status{
+    top:282px;
   }
 }
 
@@ -452,8 +467,10 @@ function chooseEgg(egg){
 
     document.getElementById("resultCard").classList.add("show");
 
+    document.body.classList.add("result-mode");
+
     document.getElementById("status").innerHTML =
-    "抽選完成，請向工作人員出示此畫面領取";
+    "抽選完成，<br>請向工作人員出示此畫面領取";
 
   }, 1800);
 }
