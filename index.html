@@ -18,21 +18,28 @@
 
 body{
   margin:0;
-  background:#2c3748;
   color:white;
   font-family:Arial, "Noto Sans TC", sans-serif;
   min-height:100vh;
   overflow:hidden;
+  background:#2c3748;
 }
 
 .page{
   position:relative;
   width:100%;
   min-height:100vh;
+
   display:flex;
   justify-content:center;
   align-items:center;
+
   text-align:center;
+
+  background-image:url("images/background.png");
+  background-size:cover;
+  background-position:center top;
+  background-repeat:no-repeat;
 }
 
 /* LOGO */
@@ -46,45 +53,11 @@ body{
   pointer-events:none;
 }
 
-/* 燈 */
-.lamp{
-  position:absolute;
-  top:-8px;
-  left:50%;
-  transform:translateX(-50%);
-  width:185px;
-  z-index:5;
-  user-select:none;
-  pointer-events:none;
-}
-
-/* 聚光燈 */
-.spotlight{
-  position:absolute;
-  top:96px;
-  left:50%;
-  transform:translateX(-50%);
-  width:155vw;
-  height:88vh;
-  background:#d48d7d;
-
-  clip-path:polygon(
-    34% 0,
-    66% 0,
-    100% 69%,
-    100% 100%,
-    0 100%,
-    0 69%
-  );
-
-  border-radius:0 0 50% 50% / 0 0 12% 12%;
-  z-index:0;
-}
-
 /* 內容 */
 .container{
   position:relative;
   z-index:3;
+
   width:100%;
   max-width:430px;
   min-height:100vh;
@@ -92,7 +65,6 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:flex-start;
 
   padding-top:210px;
   padding-left:22px;
@@ -155,8 +127,8 @@ button:active{
   display:none;
   justify-content:center;
   align-items:flex-end;
-  gap:6px;
-  margin-top:78px;
+  gap:8px;
+  margin-top:88px;
   width:100%;
 }
 
@@ -173,8 +145,8 @@ button:active{
   left:50%;
   bottom:4px;
   transform:translateX(-50%);
-  width:92px;
-  height:16px;
+  width:82px;
+  height:14px;
   background:#6f5a9c;
   border-radius:50%;
   z-index:0;
@@ -184,8 +156,8 @@ button:active{
 .egg{
   position:relative;
 
-  width:138px;
-  height:178px;
+  width:118px;
+  height:152px;
 
   background-image:url("images/egg.png");
   background-size:contain;
@@ -226,19 +198,19 @@ button:active{
   position:absolute;
 
   left:50%;
-  bottom:200px;
+  bottom:170px;
 
   transform:translateX(-50%);
 
-  width:320px;
-  height:420px;
+  width:280px;
+  height:365px;
 
   background-image:url("images/bigegg.png");
   background-size:contain;
   background-position:center;
   background-repeat:no-repeat;
 
-  padding:110px 40px 48px;
+  padding:100px 34px 40px;
 
   color:#2d3142;
 
@@ -290,7 +262,7 @@ button:active{
 /* 底部備註 */
 .status{
   position:absolute;
-  bottom:120px;
+  bottom:100px;
   left:50%;
   transform:translateX(-50%);
   width:100%;
@@ -308,17 +280,6 @@ button:active{
 
   .logo{
     width:76px;
-  }
-
-  .lamp{
-    top:-8px;
-    width:185px;
-  }
-
-  .spotlight{
-    top:96px;
-    width:158vw;
-    height:88vh;
   }
 
   .container{
@@ -351,9 +312,7 @@ button:active{
   .result-card{
     width:280px;
     height:365px;
-
     padding:100px 34px 40px;
-
     bottom:170px;
   }
 
@@ -370,10 +329,6 @@ button:active{
 <div class="page">
 
   <img src="images/logo.png" class="logo">
-
-  <img src="images/light.png" class="lamp">
-
-  <div class="spotlight"></div>
 
   <div class="container">
 
