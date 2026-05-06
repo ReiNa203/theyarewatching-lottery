@@ -38,7 +38,7 @@ body{
 
   background-image:url("images/background.png");
   background-size:100% auto;
-  background-position:top center;
+  background-position:center -38px;
   background-repeat:no-repeat;
 }
 
@@ -279,6 +279,15 @@ button:active{
   z-index:8;
 }
 
+/* 抽選完成時，隱藏舊文字 */
+body.result-mode h1,
+body.result-mode .title-line,
+body.result-mode #introText,
+body.result-mode #startBtn,
+body.result-mode #eggArea{
+  display:none !important;
+}
+
 /* 抽選完成時，備註移到結果蛋上方 */
 body.result-mode .status{
   position:absolute;
@@ -297,6 +306,10 @@ body.result-mode .status{
 
 /* 手機 */
 @media(max-width:430px){
+
+  .page{
+    background-position:center -38px;
+  }
 
   .logo{
     width:76px;
