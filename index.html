@@ -1,82 +1,124 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>牠們在看｜真相抽選</title>
 
 <style>
-
 body{
-    margin:0;
-    background:#000;
-    color:white;
-    font-family:Arial, sans-serif;
-
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
+  margin:0;
+  background:#050505;
+  color:white;
+  font-family:Arial, "Noto Sans TC", sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
 .container{
-    width:90%;
-    max-width:500px;
+  width:90%;
+  max-width:720px;
+  padding:30px 20px;
 }
 
-h1{
-    font-size:34px;
-    margin-bottom:20px;
-}
+h1{ font-size:32px; margin-bottom:12px; }
 
 p{
-    opacity:0.7;
-    line-height:1.8;
+  opacity:.75;
+  line-height:1.8;
 }
 
 button{
-
-    margin-top:30px;
-
-    padding:16px 42px;
-
-    border:none;
-    border-radius:999px;
-
-    background:white;
-    color:black;
-
-    font-size:20px;
-
-    cursor:pointer;
+  margin-top:25px;
+  padding:15px 40px;
+  border:none;
+  border-radius:999px;
+  background:white;
+  color:black;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-button:active{
-    transform:scale(0.96);
+.egg-area{
+  display:none;
+  justify-content:center;
+  gap:22px;
+  margin-top:36px;
+  flex-wrap:wrap;
 }
 
-#result{
-
-    margin-top:40px;
-
-    font-size:28px;
-
-    line-height:1.6;
-
-    font-weight:bold;
+.egg{
+  width:130px;
+  height:170px;
+  background:linear-gradient(#fff7df, #e9c98c);
+  border-radius:50% 50% 45% 45%;
+  cursor:pointer;
+  position:relative;
+  box-shadow:0 0 25px rgba(255,255,255,.18);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#3b2a16;
+  font-weight:bold;
+  font-size:20px;
+  user-select:none;
 }
 
-.small{
-    margin-top:18px;
-    font-size:14px;
-    opacity:0.5;
+.egg:hover{
+  transform:translateY(-6px);
 }
 
+.egg.shake{
+  animation:shake .08s infinite;
+}
+
+@keyframes shake{
+  0%{ transform:rotate(0deg); }
+  25%{ transform:rotate(8deg); }
+  50%{ transform:rotate(-8deg); }
+  75%{ transform:rotate(6deg); }
+  100%{ transform:rotate(0deg); }
+}
+
+.egg.open{
+  animation:none;
+  background:#111;
+  color:white;
+  border:2px solid white;
+  border-radius:20px;
+  width:260px;
+  height:auto;
+  min-height:170px;
+  padding:24px;
+  line-height:1.6;
+}
+
+.hidden{
+  display:none;
+}
+
+.status{
+  margin-top:24px;
+  font-size:15px;
+  opacity:.6;
+}
+
+@media(max-width:520px){
+  .egg{
+    width:100px;
+    height:138px;
+    font-size:16px;
+  }
+
+  .egg.open{
+    width:86%;
+    min-height:150px;
+  }
+}
 </style>
 </head>
 
@@ -84,60 +126,79 @@ button:active{
 
 <div class="container">
 
-<h1>真相周邊抽選</h1>
+  <h1>真相周邊抽選</h1>
 
-<p>
-完成現場付款後，<br>
-即可進行一次真相抽選。
-</p>
+  <p id="introText">
+    請先完成現場付款 NT$280。<br>
+    付款完成後，點擊下方按鈕開始抽選。
+  </p>
 
-<button onclick="drawPrize()">
-開始抽選
-</button>
+  <button id="startBtn" onclick="showEggs()">開始抽獎</button>
 
-<div id="result"></div>
+  <div class="egg-area" id="eggArea">
+    <div class="egg" onclick="chooseEgg(this)">蛋 01</div>
+    <div class="egg" onclick="chooseEgg(this)">蛋 02</div>
+    <div class="egg" onclick="chooseEgg(this)">蛋 03</div>
+  </div>
 
-<div class="small">
-觀察系統待命中...
-</div>
+  <div class="status" id="status">觀察系統待命中...</div>
 
 </div>
 
 <script>
-
-function drawPrize(){
-
 const prizes = [
+  "遊戲場景造型立牌｜光之室",
+  "遊戲場景造型立牌｜破殼夢",
+  "遊戲場景造型立牌｜格子籠",
+  "遊戲場景造型立牌｜食槽前的抉擇",
+  "遊戲場景造型立牌｜全員淘汰",
 
-"遊戲場景造型立牌｜光之室",
-"遊戲場景造型立牌｜破殼夢",
-"遊戲場景造型立牌｜格子籠",
-"遊戲場景造型立牌｜食槽前的抉擇",
-"遊戲場景造型立牌｜全員淘汰",
+  "卡牌流沙吊飾｜行動卡牌",
+  "卡牌流沙吊飾｜真相卡牌",
+  "卡牌流沙吊飾｜幻覺卡牌",
 
-"卡牌流沙吊飾｜行動卡牌",
-"卡牌流沙吊飾｜真相卡牌",
-"卡牌流沙吊飾｜幻覺卡牌",
-
-"角色插圖磁吸燈箱｜斷喙者・喀喀",
-"角色插圖磁吸燈箱｜編碼觀測者・C-98",
-"角色插圖磁吸燈箱｜失焦者・No.13",
-"角色插圖磁吸燈箱｜羽封者・小白",
-"角色插圖磁吸燈箱｜孵夢者・殼裡裡",
-"角色插圖磁吸燈箱｜語者・啼鳴零號"
-
+  "角色插圖磁吸燈箱｜斷喙者・喀喀",
+  "角色插圖磁吸燈箱｜編碼觀測者・C-98",
+  "角色插圖磁吸燈箱｜失焦者・No.13",
+  "角色插圖磁吸燈箱｜羽封者・小白",
+  "角色插圖磁吸燈箱｜孵夢者・殼裡裡",
+  "角色插圖磁吸燈箱｜語者・啼鳴零號"
 ];
 
-const randomIndex =
-Math.floor(Math.random() * prizes.length);
+let alreadyChosen = false;
 
-const result = prizes[randomIndex];
-
-document.getElementById("result").innerHTML =
-"你獲得了：<br><br>" + result;
-
+function showEggs(){
+  document.getElementById("startBtn").style.display = "none";
+  document.getElementById("introText").innerHTML = "請選擇一顆蛋。<br>牠會替你開啟本次配給結果。";
+  document.getElementById("eggArea").style.display = "flex";
+  document.getElementById("status").innerText = "真相碎片同步中...";
 }
 
+function chooseEgg(egg){
+  if(alreadyChosen) return;
+  alreadyChosen = true;
+
+  const allEggs = document.querySelectorAll(".egg");
+
+  allEggs.forEach(e => {
+    if(e !== egg){
+      e.classList.add("hidden");
+    }
+  });
+
+  egg.classList.add("shake");
+  document.getElementById("status").innerText = "蛋殼反應劇烈，配給結果生成中...";
+
+  setTimeout(() => {
+    const prize = prizes[Math.floor(Math.random() * prizes.length)];
+
+    egg.classList.remove("shake");
+    egg.classList.add("open");
+    egg.innerHTML = "蛋已開啟<br><br>你獲得了：<br><br>" + prize;
+
+    document.getElementById("status").innerText = "抽選完成，請向工作人員出示此畫面領取。";
+  }, 1800);
+}
 </script>
 
 </body>
